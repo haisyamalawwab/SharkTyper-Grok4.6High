@@ -40,6 +40,7 @@ import {
   useMemo,
   useRef,
   useState,
+  type CSSProperties,
   type KeyboardEvent as RKey,
 } from "react";
 
@@ -405,7 +406,7 @@ export default function SharkTyperDrill({
       setCorrectCount((n) => n + 1);
       const typed = target.typed + 1;
       if (typed >= target.text.length) {
-        const nc = stats.current.maxCombo >= 0 ? combo + 1 : 1;
+        const nc = combo + 1;
         setCombo(nc);
         stats.current.maxCombo = Math.max(stats.current.maxCombo, nc);
         const gain = 80 + nc * 12;
@@ -452,7 +453,7 @@ export default function SharkTyperDrill({
               "--x": `${(i * 37 + 11) % 100}%`,
               "--dur": `${8 + ((i * 13) % 12)}s`,
               "--delay": `${-((i * 1.7) % 10)}s`,
-            } as React.CSSProperties
+            } as CSSProperties
           }
         />
       ))}
